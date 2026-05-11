@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Status Dashboard</title>
+</head>
+<body>
+
+<h1>Status Dashboard</h1>
+
+<p>Internal service status page</p>
+
+<button onclick="loadStatus()">Get Status</button>
+
+<pre id="result"></pre>
+
+<script>
+async function loadStatus() {
+    const response = await fetch('/api/v1/status');
+    const data = await response.json();
+
+    document.getElementById('result').innerText =
+        JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
