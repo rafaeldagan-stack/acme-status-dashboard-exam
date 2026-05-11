@@ -17,10 +17,6 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/api/status")
-def api_status_redirect():
-    return redirect("/api/v1/status", code=302)
-
 
 @app.route("/api/v1/status")
 def api_status():
@@ -42,6 +38,9 @@ def secret():
         "message": "you found the secret"
     })
 
+@app.route("/api/secret")
+def secret_latest():
+    return secret()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=PORT)
